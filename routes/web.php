@@ -6,10 +6,13 @@ use App\Livewire\Settings\Appearance;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\CursosFrontController;
 
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
+Route::get('/front/cursos',[CursosFrontController::class,'index'])->name('front.cursos.index');
+Route::get('/front/cursos/{curso}',[CursosFrontController::class,'details'])->name('front.cursos.details');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])

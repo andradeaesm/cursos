@@ -50,7 +50,7 @@
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
           <li><a class="{{request()->routeIs('home')?'active':''}}" href="/">Home</a></li>
-          <li><a class="" href="#">Cursos</a></li>
+          <li><a class="{{request()->routeIs('front.cursos.*')?'active':''}}" href="{{route('front.cursos.index')}}">Cursos</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
