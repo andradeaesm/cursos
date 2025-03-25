@@ -7,12 +7,13 @@ use App\Models\Categoria;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
 
 class CursoController extends Controller
 {
     public function index(): View
     {
-        $cursos = Curso::all();
+        $cursos = Curso::with('categoria')->get();
         return view('privado.cursos.index',compact('cursos'));
     }
 
@@ -68,6 +69,7 @@ class CursoController extends Controller
         ]);
 
         if ($request->imagem) {
+            Storage::delete($curso->imagem);
             $dados['imagem'] = $request->imagem->store('cursos');
         }
 
@@ -78,6 +80,7 @@ class CursoController extends Controller
 
     public function destroy(Curso $curso): RedirectResponse
     {
+        Storage::delete($curso->imagem);
         $curso->delete();
         return redirect()->route('cursos.index');
     }

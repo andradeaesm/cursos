@@ -69,11 +69,7 @@
                             </td>
                             <td class="px-6 py-4">
                                 <img src="{{asset( $curso->imagem)}}" alt="" class="w-10 h-10 rounded-full">
-                                {{ $curso->imagem }}
                             </td>
-
-
-
                             <td class="px-6 py-4">
                                 <div class="flex flex-row justify-items-start">
 
